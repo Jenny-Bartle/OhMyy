@@ -8,9 +8,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.widget.RemoteViews;
 
-/**
- * Created by Jenny on 08/04/2015.
- */
 public class OhMyyWidgetProvider extends AppWidgetProvider {
 
         @Override
@@ -25,9 +22,6 @@ public class OhMyyWidgetProvider extends AppWidgetProvider {
             remoteViews.setOnClickPendingIntent(R.id.sync_button,
                     buildButtonPendingIntent(context));
 
-            // updating view with initial data
-            remoteViews.setTextViewText(R.id.title, getTitle());
-
             // request for widget update
             pushWidgetUpdate(context, remoteViews);
         }
@@ -39,14 +33,6 @@ public class OhMyyWidgetProvider extends AppWidgetProvider {
             intent.setAction("com.jenny.intent.action.UPDATE_WIDGET");
             return PendingIntent.getBroadcast(context, 0, intent,
                     PendingIntent.FLAG_UPDATE_CURRENT);
-        }
-
-        private static CharSequence getDesc() {
-            return "Sync to see some of our funniest joke collections";
-        }
-
-        private static CharSequence getTitle() {
-            return "Funny Jokes";
         }
 
         public static void pushWidgetUpdate(Context context, RemoteViews remoteViews) {
